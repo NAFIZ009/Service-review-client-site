@@ -1,9 +1,10 @@
 import React from 'react';
+import Slider from '../../Component/Slider/Slider';
 
 const Home = () => {
     return (
-        <div>
-            home
+        <div className='max-w-screen-xl mx-auto'>
+            <Slider></Slider>
         </div>
     );
 };

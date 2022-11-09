@@ -1,0 +1,117 @@
+.mySwiper{
+    margin:2.5rem 2rem ;
+}
+
+.overlay{
+    z-index: 1000;
+    background: rgb(21,21,21);
+    background: linear-gradient(90deg, rgba(21,21,21,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+.mySwiper img{
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.anim1{
+    animation: anim1 1.5s  infinite alternate;
+}
+
+@keyframes anim1{
+    0%{
+        color:'white'
+    }
+    20%{
+        color: rgb(255 237 213);
+    }
+    40%{
+        color: rgb(254 215 170);
+    }
+    60%{
+        color: rgb(253 186 116);
+    }
+    80%{
+        color: rgb(251 146 60);
+    }
+    90%{
+        color: rgb(249 115 22);
+    }
+    100%{
+        color: rgb(249 115 22);
+    }
+}
+.anim2{
+    animation: anim2 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes anim2{
+    100%{
+        color:'white'
+    }
+    90%{
+        color:'white'
+    }
+    80%{
+        color: rgb(255 237 213);
+    }
+    60%{
+        color: rgb(254 215 170);
+    }
+    40%{
+        color: rgb(253 186 116);
+    }
+    20%{
+        color: rgb(251 146 60);
+    }
+    0%{
+        color: rgb(249 115 22);
+    }
+}
+
+@media  only screen and (max-width:455px){
+
+    .mySwiper{
+        margin:2.5rem 1rem ;
+    }
+
+    .hero{
+        display: flex;
+    }
+    .hero-content{
+        padding: 0 !important;
+    }
+    .hero-content {
+        width: 100%;
+    }
+    .hero-content h1{
+        transform: scale(0.8) !important;
+        text-align: center;
+        margin: 0;
+        
+    }
+    .hero-content p{
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+    }
+    .hero-content .btn{
+        display: block;
+        margin: auto;
+    }
+}
+@media  only screen and (max-width:380px){
+
+    .mySwiper{
+        margin:2.5rem 0.8rem ;
+    }
+
+    .hero-content h1{
+        transform: scale(0.7) !important;
+    }
+    .hero-content p{
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
