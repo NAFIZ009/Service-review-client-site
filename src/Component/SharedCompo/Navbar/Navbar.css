@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+
+.navlink{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2.3rem;
+}
+
+@media screen and (max-width: 580px) {
+    .navlink {
+        font-size: 1.8rem;
+    }
+  }
+@media screen and (max-width: 480px) {
+    .navlink {
+        font-size: 1.3rem;
+    }
+  }
+@media screen and (max-width: 430px) {
+    .navlink {
+        font-size: 1.8rem;
+    }
+    .listItem-register{
+        display:inline;
+    }
+    .smHidden{
+       display: none;
+    }
+    .sm-F-width{
+        width: 100%;
+        flex-direction:row-reverse;
+        justify-content: space-between !important;
+    }
+  }
