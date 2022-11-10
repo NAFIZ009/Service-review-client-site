@@ -23,8 +23,8 @@ const Navbar = () => {
         <li className='hidden listItem-register'>
         {
             isLogin?<Link className='btn btn-ghost normal-case'>Log Out</Link>:<>
-            <Link className='btn btn-ghost normal-case mb-2'>Sign In</Link>
-            <Link className="btn text-white">Register</Link>
+            <Link to='/login' className='btn btn-ghost normal-case mb-2'>Sign In</Link>
+            <Link to='/register' className="btn text-white">Register</Link>
             </>
         }
         </li>
@@ -48,8 +48,8 @@ const Navbar = () => {
   <div className="navbar-end smHidden">
     {
         isLogin?<Link className='btn btn-ghost normal-case'>Log Out</Link>:<>
-        <Link className='btn btn-ghost normal-case mr-4'>Sign In</Link>
-        <Link className="btn text-white">Register</Link>
+        <Link to='/login' className='btn btn-ghost normal-case mr-4'>Sign In</Link>
+        <Link to='/register' className="btn text-white">Register</Link>
         </>
     }
     
