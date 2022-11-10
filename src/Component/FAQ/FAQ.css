@@ -1,0 +1,18 @@
+.faq-row-wrapper{
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.faq-title{
+    justify-content: center !important;
+    
+}
+.faq-title h2{
+    font-size: 3rem;
+    font-weight: 800;
+    padding-bottom: 30px;
+}
+
+.row-title-text{
+    padding-left: 16px;
+}

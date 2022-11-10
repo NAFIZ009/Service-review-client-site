@@ -2,7 +2,7 @@ import React from 'react';
 
 const WhyMe = () => {
     return (
-        <div className="hero  bg-red-100 ">
+        <div className="hero  bg-red-100 my-20">
   <div className="hero-content flex-col lg:flex-row py-6 lg:py-0 gap-10">
   <img src="https://i.ibb.co/ZgnGm0G/20220505-215806-removebg-preview.png" alt="20220505-215806-removebg-preview" className='relative bottom-0' border="0"/>
     <div className=''>
