@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import { BsGoogle } from 'react-icons/bs';
+import { ContextAuth } from '../../Context/AuthContext';
 const Register = () => {
+    const {register,updateProfileInfo,google}=useContext(ContextAuth);
+    const submitHandler=e=>{
+        e.preventDefault();
+        const form=e.target;
+        const name=form.name.value;
+        const email=form.email.value;
+        const password=form.password.value;
+        register(email,password)
+        .then(res=>{
+            updateProfileInfo(name)
+            .then(()=>{
+                form.reset();
+            });
+        });
+    };
+    const googleHandler=()=>{
+        google()
+        .then(res=>console.log(res));
+    };
     return (
         <>
         
@@ -12,7 +32,7 @@ const Register = () => {
               Register For New account
             </h2>
           </div>
-          <form className="mt-8 space-y-6" >
+          <form className="mt-8 space-y-6" onSubmit={submitHandler}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -22,6 +42,7 @@ const Register = () => {
                 <input
                   id="name"
                   type="text"
+                  name='name'
                   required
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Your Name"
@@ -74,6 +95,13 @@ const Register = () => {
               </button>
             </div>
           </form>
+          <div className="card w-full bg-base-100 shadow-xl">
+            <div className="card-body flex-row justify-between">
+                <h2 className="card-title">You Can Also Register With -</h2>
+                <Link onClick={googleHandler}><BsGoogle className='text-4xl text-red-500'/></Link>
+                
+            </div>
+        </div>
         </div>
       </div>
         

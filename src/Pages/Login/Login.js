@@ -1,11 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { BsGoogle } from 'react-icons/bs';
+import { ContextAuth } from '../../Context/AuthContext';
 const Login = () => {
+  const navigate=useNavigate()
+    const location=useLocation();
+    const {login,google}=useContext(ContextAuth);
+    const from=location.state?.from?.pathname || '/';
+    
+    const submitHandler=e=>{
+        e.preventDefault();
+        const form=e.target;
+        const email=form.email.value;
+        const password=form.password.value;
+        
+        login(email,password)
+        .then(res=>{
+                form.reset();
+                navigate(from,{replace:true});
+        });
+    };
+
+    const googleHandler=()=>{
+        google()
+        .then(res=>console.log(res));
+    };
+
+    
     return (
         <>
-        
         <div className="flex min-h-screen justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
@@ -13,7 +37,7 @@ const Login = () => {
               Log in to your account
             </h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form onSubmit={submitHandler} className="mt-8 space-y-6" action="#" method="POST">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -45,12 +69,11 @@ const Login = () => {
                 />
               </div>
             </div>
-
             <div className="flex items-center justify-between">
               
 
               <div className="text-sm">
-                <Link href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
                   New Here? Click Here For Register
                 </Link>
               </div>
@@ -68,7 +91,7 @@ const Login = () => {
           <div className="card w-full bg-base-100 shadow-xl">
             <div className="card-body flex-row justify-between">
                 <h2 className="card-title">You Can Also LogIn With -</h2>
-                <Link><BsGoogle className='text-4xl text-red-500'/></Link>
+                <Link onClick={googleHandler}><BsGoogle className='text-4xl text-red-500'/></Link>
                 
             </div>
         </div>

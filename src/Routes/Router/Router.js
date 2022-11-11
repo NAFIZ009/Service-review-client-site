@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Services from "../../Pages/Services/Services";
 import Blogs from "../../Pages/Blogs/Blogs";
 import Home from "../../Pages/Home/Home";
 import Main from "../../Pages/Layout/Main";
@@ -13,6 +14,11 @@ const Router=createBrowserRouter([
         children:[
             {
                 path:'/',
+                loader:()=>fetch('http://localhost:5000/services',{
+                    headers:{
+                        path:'home'
+                    }
+                }),
                 element:<Home></Home>
             },
             {
@@ -26,6 +32,11 @@ const Router=createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
+            },
+            {
+                path:'/services',
+                loader:()=>fetch('http://localhost:5000/services'),
+                element:<Services></Services>
             }
         ]
     }

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { ContextAuth } from '../../../Context/AuthContext';
 import './Navbar.css';
 const Navbar = () => {
-    const isLogin=false;
+    const {user,loading,logOut}=useContext(ContextAuth);
+    console.log(user);
     return (
         <div className="navbar bg-base-100 py-6 w-full max-w-screen-xl mx-auto">
   <div className="navbar-start sm-F-width">
@@ -12,17 +14,22 @@ const Navbar = () => {
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-md">
         <li><Link to='/'>Home</Link></li>
-        <li><Link>Services</Link></li>
+        <li><Link to='/services'>Services</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
         {
-            isLogin&&<>
+            !loading&&<>
             <li><Link>My Reviews</Link></li>
             <li><Link>Add Service</Link></li>
             </>
         }
         <li className='hidden listItem-register'>
         {
-            isLogin?<Link className='btn btn-ghost normal-case'>Log Out</Link>:<>
+            !loading?<div className='flex gap-5'>
+            <h2>{user.displayName}</h2>
+            <Link onClick={()=>logOut()} className='btn btn-ghost normal-case'>Log Out</Link>
+            </div>
+            :
+            <>
             <Link to='/login' className='btn btn-ghost normal-case mb-2'>Sign In</Link>
             <Link to='/register' className="btn text-white">Register</Link>
             </>
@@ -35,10 +42,10 @@ const Navbar = () => {
   <div className="navbar-center hidden lg:flex text-md font-bold">
     <ul className="menu menu-horizontal p-0">
     <li><Link to='/'>Home</Link></li>
-    <li><Link>Services</Link></li>
+    <li><Link to='/services'>Services</Link></li>
     <li><Link to='/blogs'>Blogs</Link></li>
     {
-        isLogin&&<>
+        !loading&&<>
         <li><Link>My Reviews</Link></li>
         <li><Link>Add Service</Link></li>
         </>
@@ -47,7 +54,10 @@ const Navbar = () => {
   </div>
   <div className="navbar-end smHidden">
     {
-        isLogin?<Link className='btn btn-ghost normal-case'>Log Out</Link>:<>
+        !loading?<>
+        <h1 className='text-xl font-bold '>{user.displayName}</h1>
+        <Link onClick={()=>logOut()} className='btn btn-ghost normal-case'>Log Out</Link>
+        </>:<>
         <Link to='/login' className='btn btn-ghost normal-case mr-4'>Sign In</Link>
         <Link to='/register' className="btn text-white">Register</Link>
         </>

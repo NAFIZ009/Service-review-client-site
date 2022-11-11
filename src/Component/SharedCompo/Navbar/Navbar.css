@@ -15,6 +15,12 @@
         font-size: 1.3rem;
     }
   }
+  @media (min-width: 430px) and (max-width: 1025px) {
+        .menu{
+            left:0;
+        }
+  }
+
 @media screen and (max-width: 430px) {
     .navlink {
         font-size: 1.8rem;

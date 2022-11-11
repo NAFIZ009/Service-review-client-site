@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Advertisement Videography",
+        "disc":"The most popular way for a company to connect with their customers and increase sales is through engaging advertisements. This is the reason why customers pick one brand over another, as the whole perception of a brand can change over an advertisement. Video advertisements are not only versatile and engaging but can also be easily shared which means it can reach a wider audience than intended. Videographers have adapted to the digital world to produce short advertisements that convey relevant information and can entertain the audience to hold their attention.",
+        "price":"$200",
+        "img":"https://img.freepik.com/premium-photo/young-serious-production-studio-worker-adjusting-videocamera-during-shooting_274679-39612.jpg?w=2000"
+    },
+    {
+        "name": "Corporate Videography",
+        "disc":"Apart from advertising their products, corporates also hire videographers to capture videos for internal needs. These videos include corporate event coverage, introduction videos, product videos, recruitment videos, training videos, etc. The video requirements of a company are never-ending which allows videographers to build long term relationships with their clients and land projects over many years. Ideally, these videos are targeted at the stakeholders of a company to drive performance. A skilled videographer will know how to engage every form of audience, and will thus create the perfect videos for your business needs.",
+        "price":"$500",
+        "img":"https://beverlyboy.com/wp-content/uploads/2018/12/download_20180628_123635.jpg"
+    },
+    {
+        "name": "Real Estate Videography",
+        "disc":"A dimension of videography that has been recently introduced to the industry is real estate videography. Videos can be used by real estate agents to introduce themselves, give a virtual tour of the house, give a walkthrough of the neighbourhood and maybe even host a live open house- complete with a question and answer (Q&A) session. This transition into the real estate industry goes to show the potential use of videography across multiple fields. Videographers must adapt their style and techniques to match the industry needs.",
+        "price":"$400",
+        "img":"https://beatcolor.com/kontent/uploads/2020/10/real-estate-videography3.jpeg"
+    },
+    {
+        "name": "Event Videography",
+        "disc":"Event videography is capturing social events and delivering skillfully edited footage of the same. When it comes to hiring an event videographer, you have to remember there are no do-overs. You cannot turn 21 again, no matter how much you want to. So if the videographer crashes and burns, so do your precious memories of that evening. Ensure that you hire a talented videographer, with an impressive portfolio to best fit the needs of your special occasion. It would be helpful to discuss your requirements before the event date, to determine if the videographer is a good fit for the event specifications.",
+        "price":"$450",
+        "img":"https://5.imimg.com/data5/SELLER/Default/2020/10/EQ/DF/EY/79044475/customized-event-tour-service-500x500.jpg"
+    },
+    {
+        "name": "Testimonial Videography",
+        "disc":"Video testimony is more convincing and powerful than a written review. Business books may claim that hard work can bear profitable fruit, but if you don’t have customers who can vouch for your quality services, that hard work isn’t going to do much for your company. This is why companies have been hiring professional videographers to shoot testimonials in order to spread the word to future customers.",
+        "price":"$550",
+        "img":"https://www.uscreen.tv/wp-content/uploads/2018/07/powerful-video-testimonial-examples.jpg"
+    },
+    {
+        "name": "Wedding Cinematography",
+        "disc":"We are a down to earth & artistic team of filmmakers & photographers that produce highly stylized imagery for unique couples in the Portland, Portsmouth, Boston Area.We bring a refreshing and artistic approach to Wedding Photography and Cinematography and we are known for our landscapes and our focus on nature. Our cinematography style can best be described as a high production value music video with a cinematic ceremony and a hype reception.",
+        "price":"$1550",
+        "img":"https://i.ytimg.com/vi/4xp31LYdcKo/maxresdefault.jpg"
+    }
+]
