@@ -19,7 +19,7 @@ const Navbar = () => {
         {
           loading===false&&user&&<>
             <li><Link to={`/reviews/${user.email}`}>My Reviews</Link></li>
-            <li><Link>Add Service</Link></li>
+            <li><Link to={`/addservice/${user.email}`}>Add Service</Link></li>
             </>
         }
         <li className='hidden listItem-register'>
@@ -54,7 +54,7 @@ const Navbar = () => {
     {
         loading===false&&user&&<>
         <li><Link to={`/reviews/${user.email}`}>My Reviews</Link></li>
-        <li><Link>Add Service</Link></li>
+        <li><Link to={`/addservice/${user.email}`}>Add Service</Link></li>
         </>
     }
     </ul>

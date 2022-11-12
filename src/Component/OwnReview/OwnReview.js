@@ -1,17 +1,15 @@
 import React, { useContext,useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import { ContextAuth } from '../../Context/AuthContext';
 
 const OwnReview = ({setReviews,service}) => {
-    const location=useLocation();
-    const {user,loading}=useContext(ContextAuth);
+    const {user}=useContext(ContextAuth);
     const [reviewInfo,setReviewInfo]=useState({
-        user:{
-            id:user.uid,
-            name:user.displayName,
-            photo:user.photoURL
-        },
-        email:user.email,
+      user:{
+        id:user.uid,
+        name:user.displayName,
+        photo:user.photoURL
+      },
+      email:user.email,
         service:'',
         review:''
     });
@@ -41,8 +39,7 @@ const OwnReview = ({setReviews,service}) => {
     }
     return (
         <>
-        {
-            !loading&&user.uid?<div className="card w-full bg-base-100 shadow-xl">
+      <div className="card w-full bg-base-100 shadow-xl">
             <div className="card-body">
             <div className="card-title">
             <h2 className='text-3xl'>Give Your Review</h2>
@@ -62,22 +59,6 @@ const OwnReview = ({setReviews,service}) => {
               </form>
             </div>
           </div>
-          :
-          <div className="card w-full bg-base-100 shadow-xl">
-          <div className="card-body">
-          <div className="card-title">
-          <h2 className='text-3xl'>Give Your Review</h2>
-          </div>
-            <textarea disabled className='border border-red-600 w-full p-5 text-xl' placeholder='Please LogIn First'></textarea>
-            <div className="card-actions justify-end">
-              <Link to='/login' state={{from:location}} className="btn btn-primary">LogIn Now</Link>
-            </div>
-          </div>
-        </div>
-        }
-        
-
-
 </>
     );
 };

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { BsGoogle } from 'react-icons/bs';
 import { ContextAuth } from '../../Context/AuthContext';
 const Register = () => {
@@ -15,13 +15,12 @@ const Register = () => {
         .then(res=>{
           updateProfileInfo(name,img);
           form.reset();
-          
-
+          <Navigate to='/'></Navigate>
         })
     };
     const googleHandler=()=>{
         google()
-        .then(res=>console.log(res));
+        .then(res=><Navigate to='/'></Navigate>);
     };
     return (
         <>

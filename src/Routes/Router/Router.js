@@ -8,6 +8,7 @@ import Register from "../../Pages/Register/Register";
 import MyReviews from "../../Pages/MyReviews/MyReviews";
 import ErrorPage from "../../Component/ErrorPage/ErrorPage";
 import PrivetRoute from "../../Component/PrivetRoute/PrivetRoute";
+import ServiceAdd from "../../Pages/ServiceAdd/ServiceAdd";
 
 
 const Router=createBrowserRouter([
@@ -59,8 +60,14 @@ const Router=createBrowserRouter([
                 element:<PrivetRoute><MyReviews></MyReviews></PrivetRoute>
             },
             {
-                path:'*',
-                element:<ErrorPage></ErrorPage>
+                path:'/addservice/:email',
+                loader:async({params})=>{
+                    return await fetch(`http://localhost:5000/services/${params.email}`)
+                    .then(res=>res.json())
+                    .then(data=>{return data})
+                    .catch()
+                },
+                element:<PrivetRoute><ServiceAdd></ServiceAdd></PrivetRoute>
             }
         ]
     },

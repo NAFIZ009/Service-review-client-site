@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const WhyMe = () => {
     return (
@@ -8,7 +9,7 @@ const WhyMe = () => {
     <div className=''>
       <h1 className="text-6xl font-bold text-red-500">Why Me ? ? ? ? ?</h1>
       <p className="py-6 text-lg">There is a lot of people in the market who giving you this kind of services in lower cost.But here I try to Provide my client a quality service and a better experience.</p>
-      <button className="btn btn-primary text-white" style={{marginBottom:'20px'}}>Register</button>
+      <Link to='/register' className="btn btn-primary text-white" style={{marginBottom:'20px'}}>Register</Link>
     </div>
   </div>
 </div>
