@@ -20,10 +20,14 @@ const AuthContext = ({children}) => {
         return signInWithEmailAndPassword(auth,email,password)
     };
 
-    const updateProfileInfo=name=>{
+    const updateProfileInfo=(name,img)=>{
         setLoading(true);
         return updateProfile(auth.currentUser,{
-            displayName: name
+            displayName: name,
+            photoURL:img
+        })
+        .then(()=>{
+            setLoading(false);
         })
     }
 
@@ -34,21 +38,22 @@ const AuthContext = ({children}) => {
 
     const logOut=()=>{
         setLoading(true)
-        return signOut(auth).then()
+        return signOut(auth)
     }
 
     useEffect(()=>{
         const clear=onAuthStateChanged(auth,user=>{
-            if(user){
+
                 setUser(user);
+                console.log("hi")
                 setLoading(false);
-            }
+
             
         })
         return ()=>clear()
     },[]);
 
-    const value={register,login,google,updateProfileInfo,loading,user,logOut};
+    const value={loading,register,login,google,updateProfileInfo,user,logOut};
 
     return (
         <ContextAuth.Provider value={value}>

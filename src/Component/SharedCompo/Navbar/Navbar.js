@@ -17,15 +17,22 @@ const Navbar = () => {
         <li><Link to='/services'>Services</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
         {
-            !loading&&<>
-            <li><Link>My Reviews</Link></li>
+          loading===false&&user&&<>
+            <li><Link to={`/reviews/${user.email}`}>My Reviews</Link></li>
             <li><Link>Add Service</Link></li>
             </>
         }
         <li className='hidden listItem-register'>
         {
-            !loading?<div className='flex gap-5'>
-            <h2>{user.displayName}</h2>
+            loading===false&&user?<div className='flex gap-1'>
+            <div className="flex gap-1 content-center justify-center">
+        <h1 className='text-xl font-bold'>{user.displayName}</h1>
+        <div className="avatar flex ">
+        <div className="w-8 h-10 self-center rounded-full">
+        <img src={user.photoURL}   alt="" />
+        </div>
+        </div>
+        </div>
             <Link onClick={()=>logOut()} className='btn btn-ghost normal-case'>Log Out</Link>
             </div>
             :
@@ -45,8 +52,8 @@ const Navbar = () => {
     <li><Link to='/services'>Services</Link></li>
     <li><Link to='/blogs'>Blogs</Link></li>
     {
-        !loading&&<>
-        <li><Link>My Reviews</Link></li>
+        loading===false&&user&&<>
+        <li><Link to={`/reviews/${user.email}`}>My Reviews</Link></li>
         <li><Link>Add Service</Link></li>
         </>
     }
@@ -54,9 +61,16 @@ const Navbar = () => {
   </div>
   <div className="navbar-end smHidden">
     {
-        !loading?<>
-        <h1 className='text-xl font-bold '>{user.displayName}</h1>
-        <Link onClick={()=>logOut()} className='btn btn-ghost normal-case'>Log Out</Link>
+        loading===false&&user?<>
+        <div className="flex gap-2 content-center justify-center">
+        <h1 className='text-xl font-bold self-center'>{user.displayName}</h1>
+        <div className="avatar">
+        <div className="w-10 rounded-full">
+        <img src={user.photoURL}   alt="" />
+        </div>
+        </div>
+        </div>
+        <Link onClick={()=>logOut().then(()=>{})} className='btn btn-ghost normal-case'>Log Out</Link>
         </>:<>
         <Link to='/login' className='btn btn-ghost normal-case mr-4'>Sign In</Link>
         <Link to='/register' className="btn text-white">Register</Link>

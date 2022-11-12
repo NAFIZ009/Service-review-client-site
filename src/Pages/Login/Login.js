@@ -24,7 +24,9 @@ const Login = () => {
 
     const googleHandler=()=>{
         google()
-        .then(res=>console.log(res));
+        .then(res=>{
+          navigate(from,{replace:true});
+        });
     };
 
     

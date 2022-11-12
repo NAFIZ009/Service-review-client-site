@@ -8,15 +8,16 @@ const Register = () => {
         e.preventDefault();
         const form=e.target;
         const name=form.name.value;
+        const img=form.img.value;
         const email=form.email.value;
         const password=form.password.value;
         register(email,password)
         .then(res=>{
-            updateProfileInfo(name)
-            .then(()=>{
-                form.reset();
-            });
-        });
+          updateProfileInfo(name,img);
+          form.reset();
+          
+
+        })
     };
     const googleHandler=()=>{
         google()
@@ -60,6 +61,18 @@ const Register = () => {
                   required
                   className="relative block w-full appearance-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Email address"
+                />
+              </div>
+              <div>
+                <label htmlFor="img" className="sr-only">
+                  Image Link
+                </label>
+                <input
+                  name="img"
+                  type="text"
+                  required
+                  className="relative block w-full appearance-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Image Link"
                 />
               </div>
               <div>
