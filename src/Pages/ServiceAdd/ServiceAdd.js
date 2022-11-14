@@ -1,14 +1,20 @@
-import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
 import NoDataFound from '../../Component/NoDataFound/NoDataFound';
 import ServicePart from '../../Component/ServicePart/ServicePart';
+import { DynamicTittle } from '../../Component/SharedCompo/DynamicTittle/DynamicTittle';
 import { ContextAuth } from '../../Context/AuthContext';
 
 const ServiceAdd = () => {
-    const services=useLoaderData();
     const {user}=useContext(ContextAuth);
-    const {addedService,setAddedService}=useState(services);
-
+    const [addedService,setAddedService]=useState([]);
+    useEffect(()=>{
+      fetch(`http://localhost:5000/service/${user.email}`)
+      .then(res=>res.json())
+      .then(data=>{
+        console.log("fethc");
+        setAddedService(data)
+      });
+    },[])
     const subHandler =e=>{
         e.preventDefault();
         const form=e.target;
@@ -23,7 +29,7 @@ const ServiceAdd = () => {
             price:`$${servicePrice}`,
             img:serviceImg,
             mail:serviceMail
-        }
+        };
         fetch('http://localhost:5000/services',{
             method: 'POST',
             headers:{
@@ -31,11 +37,17 @@ const ServiceAdd = () => {
             },
             body: JSON.stringify(service)
         })
-        .then(()=>setAddedService(prev=>{return [...prev,service]}))
+        .then(()=>{
+          form.reset();
+          setAddedService(prev=>{return [...prev,service]})
+        })
 
     }
     return (
         <>
+        
+          <DynamicTittle title='Service Add'></DynamicTittle>
+        
         <div className='my-16'>
         <h1 className='text-center text-3xl underline text-orange-500 font-bold'>Add Your Service</h1>
         <form onSubmit={subHandler} className="mt-8 space-y-6 max-w-xl mx-auto " action="#" method="POST">
@@ -111,9 +123,12 @@ const ServiceAdd = () => {
         </div>
         <div className="my-10">
         <h1 className='text-center text-3xl mb-10 underline text-orange-500 font-bold'>Your Added Service</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 w-10/12 mx-auto my-10">
         {
             addedService?addedService.map(ser=><ServicePart service={ser} ></ServicePart>):<NoDataFound></NoDataFound>
         }
+        </div>
+        
         
         </div>
         

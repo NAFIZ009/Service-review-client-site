@@ -10,12 +10,12 @@ const OwnReview = ({setReviews,service}) => {
         photo:user.photoURL
       },
       email:user.email,
-        service:'',
+        service:service.name,
         review:''
     });
     const selectHandler=e=>{
-        const service=e.target.value;
-        setReviewInfo({...reviewInfo,service:service});
+        const serviceName=service.name;
+        setReviewInfo({...reviewInfo,service:serviceName});
     }
     
     const textAreaHandler=e=>{
@@ -47,10 +47,7 @@ const OwnReview = ({setReviews,service}) => {
             <h3>Which Service Do You Want To GIve Review?</h3>
             <form onSubmit={reviewBtn}>
             <select onChange={selectHandler} className="select select-accent w-full max-w-xs">
-            <option disabled selected>Service</option>
-            {
-              service&&service.map((ser,i)=><option key={i} value={ser.name}>{ser.name}</option>)
-            }
+            <option disabled selected className='text-gray-500'>{service.name}</option>
           </select>
             <textarea onChange={textAreaHandler} className='w-full mt-2 p-5 text-lg' placeholder='Give Your Review Here'></textarea>
               <div className="card-actions justify-end mt-5">

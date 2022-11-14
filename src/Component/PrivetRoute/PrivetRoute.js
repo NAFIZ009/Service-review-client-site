@@ -6,7 +6,7 @@ const PrivetRoute = ({children}) => {
     const {user,loading}=useContext(ContextAuth);
     const location=useLocation();
     if(loading){
-        return <div>loading</div>;
+        return <div className='w-12/12 flex justify-center'><div className="radial-progress my-20 text-red-500" style={{"--value":70}}>LOADING</div></div>;
     }
 
     if(user&&user.uid){
@@ -14,14 +14,6 @@ const PrivetRoute = ({children}) => {
     }else{
         return <Navigate to='/login' state={{from:location}}></Navigate>
     }
-    // if(loading){
-    //     return <div>Loading.....</div>
-    // }
-    // if(user.uid){
-    //     return children;
-    // }
-    
-    // return <Navigate to='/login'></Navigate>
 };
 
 export default PrivetRoute;

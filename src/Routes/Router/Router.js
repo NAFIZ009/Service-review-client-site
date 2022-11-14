@@ -9,6 +9,7 @@ import MyReviews from "../../Pages/MyReviews/MyReviews";
 import ErrorPage from "../../Component/ErrorPage/ErrorPage";
 import PrivetRoute from "../../Component/PrivetRoute/PrivetRoute";
 import ServiceAdd from "../../Pages/ServiceAdd/ServiceAdd";
+import IndService from "../../Component/IndividualService/IndService";
 
 
 const Router=createBrowserRouter([
@@ -50,9 +51,19 @@ const Router=createBrowserRouter([
                 element:<Services></Services>
             },
             {
+                path:'/services/:id',
+                loader:async({params})=>{
+                   return await fetch(`http://localhost:5000/services/${params.id}`)
+                    .then(res=>res.json())
+                    .then(data=>{return data})
+                    .catch()
+                },
+                element:<IndService></IndService>
+            },
+            {
                 path:'/reviews/:email',
                 loader:async({params})=>{
-                    return await fetch(`http://localhost:5000/reviews/${params.email}`)
+                    return await fetch(`http://localhost:5000/review/${params.email}`)
                     .then(res=>res.json())
                     .then(data=>{return data})
                     .catch()
@@ -61,12 +72,6 @@ const Router=createBrowserRouter([
             },
             {
                 path:'/addservice/:email',
-                loader:async({params})=>{
-                    return await fetch(`http://localhost:5000/services/${params.email}`)
-                    .then(res=>res.json())
-                    .then(data=>{return data})
-                    .catch()
-                },
                 element:<PrivetRoute><ServiceAdd></ServiceAdd></PrivetRoute>
             }
         ]

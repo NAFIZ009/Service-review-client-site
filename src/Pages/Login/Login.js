@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { BsGoogle } from 'react-icons/bs';
 import { ContextAuth } from '../../Context/AuthContext';
+import { DynamicTittle } from '../../Component/SharedCompo/DynamicTittle/DynamicTittle';
 const Login = () => {
   const navigate=useNavigate()
     const location=useLocation();
     const {login,google}=useContext(ContextAuth);
+    const [loggedIn,setLoggedIn]=useState(false);
+    const [error,setError]=useState("");
     const from=location.state?.from?.pathname || '/';
     
     const submitHandler=e=>{
@@ -18,20 +21,39 @@ const Login = () => {
         login(email,password)
         .then(res=>{
                 form.reset();
+                setLoggedIn(true);
                 navigate(from,{replace:true});
-        });
+        })
+        .catch(err=>setError(err.massage))
     };
 
     const googleHandler=()=>{
         google()
         .then(res=>{
+          setLoggedIn(true);
           navigate(from,{replace:true});
-        });
+        })
+        .catch(err=>setError(err.massage))
     };
 
     
     return (
         <>
+        <DynamicTittle title='Login'></DynamicTittle>
+        {loggedIn&&<div className="alert alert-success shadow-lg">
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    <span>Registration SuccessFull</span>
+  </div>
+</div>}
+{
+  error&&<div className="alert alert-error shadow-lg">
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    <span>Error! {error}</span>
+  </div>
+</div>
+}
         <div className="flex min-h-screen justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>

@@ -1,8 +1,10 @@
 import React from 'react';
+import { DynamicTittle } from '../../Component/SharedCompo/DynamicTittle/DynamicTittle';
 
 const Blogs = () => {
     return (
         <div>
+        <DynamicTittle title='Blogs'></DynamicTittle>
         <div className="card w-10/12 my-8 mx-auto bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">1. Difference between sql and nosql</h2>

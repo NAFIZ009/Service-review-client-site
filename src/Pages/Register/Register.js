@@ -1,9 +1,13 @@
-import React, { useContext } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsGoogle } from 'react-icons/bs';
 import { ContextAuth } from '../../Context/AuthContext';
+import { DynamicTittle } from '../../Component/SharedCompo/DynamicTittle/DynamicTittle';
 const Register = () => {
+  const navigate=useNavigate();
     const {register,updateProfileInfo,google}=useContext(ContextAuth);
+    const [registered,setRegistered]=useState(false);
+    const [error,setError]=useState("");
     const submitHandler=e=>{
         e.preventDefault();
         const form=e.target;
@@ -14,17 +18,37 @@ const Register = () => {
         register(email,password)
         .then(res=>{
           updateProfileInfo(name,img);
+          setRegistered(true);
           form.reset();
-          <Navigate to='/'></Navigate>
+          navigate('/')
         })
+        .catch(err=>setError(err.massage))
     };
     const googleHandler=()=>{
         google()
-        .then(res=><Navigate to='/'></Navigate>);
+        .then(res=>{
+          setRegistered(true);
+          navigate('/')
+        })
+        .catch(err=>setError(err.massage))
     };
     return (
         <>
-        
+        {registered&&<div className="alert alert-success shadow-lg">
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    <span>Registration SuccessFull</span>
+  </div>
+</div>}
+{
+  error&&<div className="alert alert-error shadow-lg">
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    <span>Error! {error}</span>
+  </div>
+</div>
+}
+        <DynamicTittle title='Register'></DynamicTittle>
         <div className="flex min-h-screen justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
