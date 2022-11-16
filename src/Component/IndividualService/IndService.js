@@ -25,18 +25,18 @@ const IndService = () => {
     return (
         <div>
         <div className="card lg:card-side bg-base-100 shadow-xl mx-5 my-10">
-  <figure>
+  <figure className='lg:w-6/12'>
   <PhotoProvider>
   <PhotoView src={img}>
   <img src={img} alt="Shoes"  />
   </PhotoView>
     </PhotoProvider>
   </figure>
-  <div className="card-body w-6/12 flex flex-col gap-5">
+  <div className="card-body lg:w-6/12 justify-center  flex flex-col gap-5">
     <h1 className='text-3xl font-bold'>{name}</h1>
     <h1 className='text-xl'>{mail}</h1>
     <h1 className='text-lg'>{price}</h1>
-    <p className='text-gray-500'>{disc}</p>
+    <p className='text-gray-500 '>{disc}</p>
   </div>
 </div>
 <h1 className='text-center text-6xl text-orange-400 underline' >Reviews</h1>
