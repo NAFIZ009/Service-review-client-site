@@ -16,7 +16,7 @@ const IndService = () => {
     const location=useLocation();
     const {_id,name,price,img,disc,mail}=service;
     useEffect(()=>{
-        const clear=fetch(`http://localhost:5000/reviews/${service.name}`)
+        const clear=fetch(`https://video-walah-server-nafiz009.vercel.app/reviews/${service.name}`)
         .then(res=>res.json())
         .then(data=>setReviews(data))
         .catch()

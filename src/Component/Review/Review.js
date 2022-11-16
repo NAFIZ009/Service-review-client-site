@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const Review = ({reviewDetails,setReviews,reviews,myreviews=false}) => {
   const [updateBtnTriggered,setUpdateBtnTriggered]=useState(false);
   const dltBtn=(id)=>{
-    fetch(`http://localhost:5000/reviews/${id}`,{
+    fetch(`https://video-walah-server-nafiz009.vercel.app/reviews/${id}`,{
       method:'Delete'
     })
     .then(res=>{
@@ -18,7 +18,7 @@ const Review = ({reviewDetails,setReviews,reviews,myreviews=false}) => {
     e.preventDefault();
     const updatedValue=e.target.textarea.value;
     console.log(updatedValue)
-     fetch(`http://localhost:5000/reviews/${id}`,
+     fetch(`https://video-walah-server-nafiz009.vercel.app/reviews/${id}`,
      {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },

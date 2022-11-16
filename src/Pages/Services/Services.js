@@ -14,7 +14,7 @@ const Services = () => {
             <h1 className='text-center text-6xl text-orange-400 underline' >Services</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 w-10/12 mx-auto my-10">
                 {
-                   service==null?<NoDataFound></NoDataFound>:service.map(servicess=><ServicePart service={servicess}/>)
+                   service==null?<NoDataFound></NoDataFound>:service.map(servicess=><ServicePart isHome service={servicess}/>)
                 }
             </div>
            

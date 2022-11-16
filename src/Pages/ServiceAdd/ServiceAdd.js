@@ -8,7 +8,7 @@ const ServiceAdd = () => {
     const {user}=useContext(ContextAuth);
     const [addedService,setAddedService]=useState([]);
     useEffect(()=>{
-      fetch(`http://localhost:5000/service/${user.email}`)
+      fetch(`https://video-walah-server-nafiz009.vercel.app/service/${user.email}`)
       .then(res=>res.json())
       .then(data=>{
         console.log("fethc");
@@ -30,7 +30,7 @@ const ServiceAdd = () => {
             img:serviceImg,
             mail:serviceMail
         };
-        fetch('http://localhost:5000/services',{
+        fetch('https://video-walah-server-nafiz009.vercel.app/services',{
             method: 'POST',
             headers:{
                 "content-type": "application/json"

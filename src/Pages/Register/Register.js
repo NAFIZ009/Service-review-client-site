@@ -16,18 +16,43 @@ const Register = () => {
         const email=form.email.value;
         const password=form.password.value;
         register(email,password)
-        .then(res=>{
+        .then(async(res)=>{
           updateProfileInfo(name,img);
           setRegistered(true);
           form.reset();
+          await fetch('https://video-walah-server-nafiz009.vercel.app/jwt',{
+                  method: 'POST',
+                  headers:{
+                    'content-type': 'application/json'
+                  },
+                  body: JSON.stringify({email})
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                  localStorage.setItem('token',data.token);
+                })
+                .catch(err=>console.log(err.massage));
           navigate('/')
         })
         .catch(err=>setError(err.massage))
     };
     const googleHandler=()=>{
         google()
-        .then(res=>{
+        .then(async(res)=>{
           setRegistered(true);
+          const email=res.user.email;
+          await fetch('https://video-walah-server-nafiz009.vercel.app/jwt',{
+                  method: 'POST',
+                  headers:{
+                    'content-type': 'application/json'
+                  },
+                  body: JSON.stringify({email})
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                  localStorage.setItem('token',data.token);
+                })
+                .catch(err=>console.log(err.massage))
           navigate('/')
         })
         .catch(err=>setError(err.massage))

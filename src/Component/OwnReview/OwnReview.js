@@ -24,7 +24,7 @@ const OwnReview = ({setReviews,service}) => {
 
     const reviewBtn=(e)=>{
       e.preventDefault();
-      fetch("http://localhost:5000/reviews",{
+      fetch("https://video-walah-server-nafiz009.vercel.app/reviews",{
         method:"POST",
         headers:{
           "content-type": "application/json"

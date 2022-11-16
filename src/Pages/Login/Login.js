@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {  Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { BsGoogle } from 'react-icons/bs';
 import { ContextAuth } from '../../Context/AuthContext';
@@ -17,11 +17,22 @@ const Login = () => {
         const form=e.target;
         const email=form.email.value;
         const password=form.password.value;
-        
         login(email,password)
-        .then(res=>{
+        .then(async(res)=>{
                 form.reset();
                 setLoggedIn(true);
+                await fetch('https://video-walah-server-nafiz009.vercel.app/jwt',{
+                  method: 'POST',
+                  headers:{
+                    'content-type': 'application/json'
+                  },
+                  body: JSON.stringify({email})
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                  localStorage.setItem('token',data.token);
+                })
+                .catch(err=>console.log(err.massage));
                 navigate(from,{replace:true});
         })
         .catch(err=>setError(err.massage))
@@ -29,8 +40,21 @@ const Login = () => {
 
     const googleHandler=()=>{
         google()
-        .then(res=>{
+        .then(async(res)=>{
           setLoggedIn(true);
+          const email=res.user.email;
+          await fetch('https://video-walah-server-nafiz009.vercel.app/jwt',{
+                  method: 'POST',
+                  headers:{
+                    'content-type': 'application/json'
+                  },
+                  body: JSON.stringify({email})
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                  localStorage.setItem('token',data.token);
+                })
+                .catch(err=>console.log(err.massage))
           navigate(from,{replace:true});
         })
         .catch(err=>setError(err.massage))

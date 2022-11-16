@@ -41,7 +41,7 @@ const Slider= () => {
                         <p className="py-6 text-white">
                             I am a Videographer and Content Creator.Offers You Smooth Video Shooting In a Cheap Range
                         </p>
-                        <Link to='/services' className="btn btn-ghost bg-white text-black hover:bg-red-300 hover:text-white">Check What I Offer</Link>
+                        <Link to='/services' className="btn btn-ghost text-center py-4 bg-white text-black hover:bg-red-300 hover:text-white">Check What I Offer</Link>
                 </div>
             </div>
       </div>

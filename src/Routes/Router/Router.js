@@ -20,7 +20,7 @@ const Router=createBrowserRouter([
             {
                 path:'/',
                 loader:async()=>{
-                   return await fetch('http://localhost:5000/services',{
+                   return await fetch('https://video-walah-server-nafiz009.vercel.app/services',{
                         headers:{
                             path:'home'
                         }}).then(res=>res.json()).then(data=>data).catch()
@@ -43,7 +43,7 @@ const Router=createBrowserRouter([
             {
                 path:'/services',
                 loader:async()=>{
-                   return await fetch('http://localhost:5000/services')
+                   return await fetch('https://video-walah-server-nafiz009.vercel.app/services')
                     .then(res=>res.json())
                     .then(data=>{return data})
                     .catch()
@@ -53,7 +53,7 @@ const Router=createBrowserRouter([
             {
                 path:'/services/:id',
                 loader:async({params})=>{
-                   return await fetch(`http://localhost:5000/services/${params.id}`)
+                   return await fetch(`https://video-walah-server-nafiz009.vercel.app/services/${params.id}`)
                     .then(res=>res.json())
                     .then(data=>{return data})
                     .catch()
@@ -63,10 +63,16 @@ const Router=createBrowserRouter([
             {
                 path:'/reviews/:email',
                 loader:async({params})=>{
-                    return await fetch(`http://localhost:5000/review/${params.email}`)
+                    return await fetch(`https://video-walah-server-nafiz009.vercel.app/review/${params.email}`,{
+                        headers:{
+                            authorization:`Bearer ${localStorage.getItem('token')}`
+                        }
+                    })
                     .then(res=>res.json())
                     .then(data=>{return data})
-                    .catch()
+                    .catch(err=>{
+                        console.log(err)
+                    })
                 },
                 element:<PrivetRoute><MyReviews></MyReviews></PrivetRoute>
             },
